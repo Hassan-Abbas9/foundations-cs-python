@@ -25,4 +25,46 @@ def add_matrices():
     print(f'The sum is: {result_matrix}')
 
 
-add_matrices()
+# add_matrices()
+
+def rotation_matrix():
+    rows = int(input("Enter the number of rows for the first matrix"))
+    columns = int(input("Enter the number of columns for the first matrix"))
+    matrix_x = []
+    for i in range(rows):
+        input_strings = input(f"Enter the elements of the row {i + 1} of the first matrix: ").split()
+        numbers = []
+        for j in range(columns):
+            numbers.append(int(input_strings[j]))
+        matrix_x.append(numbers)
+    print(matrix_x)
+
+    rows2 = int(input("Enter the number of rows for the second matrix"))
+    columns2 = int(input("Enter the number of columns for the second matrix"))
+    matrix_y = []
+    for i in range(rows2):
+        input_strings = input(f"Enter the elements of the row {i + 1} of the second matrix: ").split()
+        numbers = []
+        for j in range(columns2):
+            numbers.append(int(input_strings[j]))
+        matrix_y.append(numbers)
+    print(matrix_y)
+
+    if len(matrix_x[0]) != len(matrix_y) or len(matrix_x) != len(matrix_y[0]):
+        print(f"the length of matrix_x[0] is:   {len(matrix_x[0])}")
+        print(f"the length of matrix_y is:   {len(matrix_y)}")
+        print(f"the length of matrix_x is:   {len(matrix_x)}")
+        print(f"the length of matrix_y[0] is:   {len(matrix_y)}")
+
+        return print(" The MATRIX_Y is not the rotation of MATRIX_X because the length of elements is different")
+
+    num_rows_x, num_cols_x = len(matrix_x), len(matrix_x[0])
+    for i in range(num_rows_x):
+        for j in range(num_cols_x):
+            if matrix_x[i][j] != matrix_y[j][i]:
+                return print(" The MATRIX_Y is not the rotation of MATRIX_X ")
+
+    return print(" The MATRIX_Y is the rotation of MATRIX_X ")
+
+
+rotation_matrix()
