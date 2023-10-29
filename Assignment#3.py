@@ -99,4 +99,19 @@ def invert_dictionary():
     print(f"After inverting:\n{invert_dictionary}")
 
 
-invert_dictionary()
+# invert_dictionary()
+
+def list_to_dictionary():
+    number_of_inputs = int(input("Enter the number of user data you want to add to the system: "))
+    all_user_data = {}
+
+    for i in range(number_of_inputs):
+        user_data = input("Enter the data of the user (First Name, Last Name, ID, Job Title, and Company): ").split()
+        key = user_data[2]
+        values = user_data[0:2] + user_data[3:5]
+        all_user_data[key] = values
+
+    print(f"All user data \n{all_user_data}")
+
+
+list_to_dictionary()
