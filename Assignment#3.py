@@ -67,4 +67,36 @@ def rotation_matrix():
     return print(" The MATRIX_Y is the rotation of MATRIX_X ")
 
 
-rotation_matrix()
+# rotation_matrix()
+
+def invert_dictionary():
+    value = int(input("Enter the number of Keys you want to enter in the dictionary:  "))
+    user_dictionary = {}
+
+    for i in range(value):
+        key = input(f"Enter the {i + 1} key : ")
+        value = input(f" Enter the {i + 1} value : ")
+
+        user_dictionary[key] = value
+
+    print(f" Before inverting: \n {user_dictionary}")
+
+    invert_dictionary = {}
+
+    for key, value in user_dictionary.items():
+        if value in invert_dictionary:
+            old_values = invert_dictionary[value]
+
+            if type(old_values) is list:
+                old_values.append(key)
+            else:
+                lst = [old_values, key]
+                invert_dictionary[value] = lst
+
+        else:
+            invert_dictionary[value] = key
+
+    print(f"After inverting:\n{invert_dictionary}")
+
+
+invert_dictionary()
