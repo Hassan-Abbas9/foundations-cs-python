@@ -1,4 +1,4 @@
-def add_matrices():
+def add_matrices():        #O(n^2)
     rows = int(input("Enter the number of rows:  "))
     columns = int(input("Enter the number of Columns:  "))
     matrixA = []
@@ -27,7 +27,7 @@ def add_matrices():
 
 # add_matrices()
 
-def rotation_matrix():
+def rotation_matrix():        #O(n^2)
     rows = int(input("Enter the number of rows for the first matrix"))
     columns = int(input("Enter the number of columns for the first matrix"))
     matrix_x = []
@@ -69,7 +69,7 @@ def rotation_matrix():
 
 # rotation_matrix()
 
-def invert_dictionary():
+def invert_dictionary():     #O(N)
     value = int(input("Enter the number of Keys you want to enter in the dictionary:  "))
     user_dictionary = {}
 
@@ -101,7 +101,7 @@ def invert_dictionary():
 
 # invert_dictionary()
 
-def list_to_dictionary():
+def list_to_dictionary():  #O(n)
     number_of_inputs = int(input("Enter the number of user data you want to add to the system: "))
     all_user_data = {}
 
@@ -116,7 +116,7 @@ def list_to_dictionary():
 
 # list_to_dictionary()
 
-def is_palindrome(str, start_index, end_index):
+def is_palindrome(str, start_index, end_index):  #O(n)
     if start_index == end_index:
         return True
 
@@ -143,7 +143,7 @@ def display_menu():
         "The options are: \n1. Add Matrices \n2. Check Rotation \n3. Invert Dictionary \n4. Convert Matrix to Dictionary \n5. Check Palindrome  \n7. Exit")
 
 
-def main():
+def main():       #O(1)
     print("****Welcome to this program****")
     choice = 0
     while choice != 7:
