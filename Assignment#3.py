@@ -136,4 +136,41 @@ def palindrome_check():
         print(f"{s} is not a palindrome ")
 
 
-palindrome_check()
+#palindrome_check()
+
+def display_menu():
+    print(
+        "The options are: \n1. Add Matrices \n2. Check Rotation \n3. Invert Dictionary \n4. Convert Matrix to Dictionary \n5. Check Palindrome  \n7. Exit")
+
+
+def main():
+    print("****Welcome to this program****")
+    choice = 0
+    while choice != 7:
+        display_menu()
+        choice = int(input("\n Enter your choice : "))
+
+        if choice == 1:
+            add_matrices()
+
+        elif choice == 2:
+            rotation_matrix()
+
+        elif choice == 3:
+            invert_dictionary()
+
+        elif choice == 4:
+            list_to_dictionary()
+
+        elif choice == 5:
+            palindrome_check()
+
+        elif choice == 7:
+            print("You exit the program ")
+
+        else:
+            print("Wrong input, choose 1-7.")
+            pass
+
+
+main()
