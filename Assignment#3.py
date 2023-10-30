@@ -114,4 +114,26 @@ def list_to_dictionary():
     print(f"All user data \n{all_user_data}")
 
 
-list_to_dictionary()
+# list_to_dictionary()
+
+def is_palindrome(str, start_index, end_index):
+    if start_index == end_index:
+        return True
+
+    if str[start_index] != str[end_index]:
+        return False
+
+    if start_index < end_index + 1:
+        return is_palindrome(str, start_index + 1, end_index - 1)
+
+def palindrome_check():
+    s = input("Enter any word  :  ")
+    palindrome = is_palindrome(s, 0, len(s)-1)
+
+    if palindrome:
+        print(f"{s} is a palindrome ")
+    else:
+        print(f"{s} is not a palindrome ")
+
+
+palindrome_check()
