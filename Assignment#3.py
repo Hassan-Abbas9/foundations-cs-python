@@ -140,7 +140,8 @@ def palindrome_check():
 
 def display_menu():
     print(
-        "The options are: \n1. Add Matrices \n2. Check Rotation \n3. Invert Dictionary \n4. Convert Matrix to Dictionary \n5. Check Palindrome  \n7. Exit")
+        "The options are: \n1. Add Matrices \n2. Check Rotation \n3. Invert Dictionary \n4. Convert Matrix to "
+        "Dictionary \n5. Check Palindrome  \n7. Exit \n\nPlease choose a number from 1-7: ")
 
 
 def main():       #O(1)
