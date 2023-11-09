@@ -11,6 +11,16 @@ def open_new_tab():
 
     print("your opened tabs are : ", tabs)
 
+
 open_new_tab()
 
+
+def close_tab():
+
+    if not tabs:  # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
+        print("There are no tabs open.")
+
+    print("\nThe opened tabs are of the following indexes: ")
+    for i in range(len(tabs)):
+        print(f"\n{i+1}. {tabs[i]}")
 
