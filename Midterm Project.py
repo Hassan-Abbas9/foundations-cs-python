@@ -24,3 +24,18 @@ def close_tab():
     for i in range(len(tabs)):
         print(f"\n{i+1}. {tabs[i]}")
 
+    close_index = input("\nEnter the index of the tab you want to close / press ENTER to close the last tab : ")
+    if close_index == "":  # if empty input, means we remove the last TAB
+        closed_tab = tabs.pop()  # https://www.w3schools.com/python/ref_list_pop.asp method used to CLOSE the last tab directly from the users tabs list
+        print(f"\nYou closed the last tab {closed_tab}")
+    else:
+        close_index = int(close_index)
+        if 1 <= close_index <= len(tabs):
+            closed_tab = tabs.pop(close_index - 1)
+            print(f"\nYou closed the last tab {closed_tab}")
+        else:
+            print("\nInvalid Index. No tab closed")
+            return
+
+
+close_tab()
