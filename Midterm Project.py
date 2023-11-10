@@ -6,7 +6,7 @@ tabs = []
 
 def open_new_tab():
     number = int(input("Please enter the number of tabs you want to input : "))
-    
+
     for i in range(number):
         title = input(f'Please input the TITLE of Tab {i + 1} : ')
         url = input(f'Please input the URL of Tab {i + 1} : ')
@@ -82,3 +82,17 @@ def switch_tab():
 
 switch_tab()
 
+
+def display_all_tabs():
+    if not tabs:
+        print("There are no tabs opened")
+        return
+
+    else:
+        print("\nThe opened tabs are the following : ")
+        for i in range(len(tabs)):
+            for key, value in tabs[i].items():
+                title = key
+                print(f"{title}")
+
+display_all_tabs()
