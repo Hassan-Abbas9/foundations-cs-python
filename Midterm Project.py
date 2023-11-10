@@ -117,7 +117,9 @@ def open_nested_tab():
 
             if url.startswith("https://") or url.startswith("http://"):
                 new_nested_tab = {title: url}
-                tabs[index_parent_tab].update(new_nested_tab)
+                tabs[index_parent_tab].update(new_nested_tab)   # The update method in dictionaries
+                # https://www.w3schools.com/python/ref_dictionary_update.asp
+
             else:
                 print("Your input URL is wrong. Make sure it starts with https:// or http://")
                 return
@@ -126,4 +128,12 @@ def open_nested_tab():
 
 
 open_nested_tab()
+
+
+def clear_all_tabs():
+    tabs.clear()
+    print("***********You just cleared all of your tabs***********")
+
+clear_all_tabs()
+
 
