@@ -115,13 +115,15 @@ def open_nested_tab():
             title = input("Enter the title of the nested tab : ")
             url = input("Enter the url of the nested tab : ")
 
-            for key, value in tabs[index_parent_tab].items():
+            if url.startswith("https://") or url.startswith("http://"):
                 new_nested_tab = {title: url}
-                tabs.insert(index_parent_tab, new_nested_tab)
+                tabs[index_parent_tab].update(new_nested_tab)
+            else:
+                print("Your input URL is wrong. Make sure it starts with https:// or http://")
+                return
 
     print("list of the opened tabs now are : ", tabs)
 
 
 open_nested_tab()
-
 
