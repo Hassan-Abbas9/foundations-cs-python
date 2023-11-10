@@ -1,7 +1,8 @@
 tabs = []
 
+
 def open_new_tab():
-    number = int(input("please enter the number of tabs : "))
+    number = int(input("Please enter the number of tabs : "))
     for i in range(number):
         title = input(f'Please input the TITLE of Tab {i + 1} : ')
         url = input(f'Please input the URL of Tab {i + 1} : ')
@@ -16,13 +17,13 @@ open_new_tab()
 
 
 def close_tab():
-
     if not tabs:  # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
-        print("There are no tabs open.")
+        print("\nThere are no tabs open for you to close.")
+    else:
+        print("\nThe opened tabs are of the following indexes : ")
 
-    print("\nThe opened tabs are of the following indexes: ")
     for i in range(len(tabs)):
-        print(f"\n{i+1}. {tabs[i]}")
+        print(f"\n{i + 1}. {tabs[i]}")
 
     close_index = input("\nEnter the index of the tab you want to close / press ENTER to close the last tab : ")
     if close_index == "":  # if empty input, means we remove the last TAB
