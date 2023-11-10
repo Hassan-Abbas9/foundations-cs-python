@@ -1,5 +1,6 @@
 import requests  # pip install requests used this in terminal  https://pypi.org/project/beautifulsoup4/
 from bs4 import BeautifulSoup  # pip install beautifulsoup4 used this in terminal
+import json
 
 tabs = []
 
@@ -136,4 +137,8 @@ def clear_all_tabs():
 
 clear_all_tabs()
 
+
+def save_tabs():
+# JSON stands for JavaScript Object Notation
+# installed json in terminal using "pip install simplejson" from https://stackoverflow.com/questions/1389141/how-to-add-json-library
 
