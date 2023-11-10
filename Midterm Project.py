@@ -40,3 +40,14 @@ def close_tab():
 
 
 close_tab()
+
+
+def switch_tab():
+
+    if not tabs:
+        print("There are no tabs opened.")
+
+    print("\nThe opened tabs are of the following indexes: ")
+
+    for i in range(len(tabs)):
+        print(f"\n{i+1}. {tabs[i]}")
