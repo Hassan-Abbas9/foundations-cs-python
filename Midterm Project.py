@@ -96,3 +96,15 @@ def display_all_tabs():
                 print(f"{title}")
 
 display_all_tabs()
+
+
+def open_nested_tab():
+    if not tabs:
+        print("There are no tabs opened")
+        return
+    else:
+        print("Where would you like to open the nested tab : ")
+
+        for i in range(len(tabs)):
+            print(f"\n{i + 1}. {tabs[i]}")
+
