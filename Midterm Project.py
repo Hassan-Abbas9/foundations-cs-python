@@ -108,3 +108,20 @@ def open_nested_tab():
         for i in range(len(tabs)):
             print(f"\n{i + 1}. {tabs[i]}")
 
+        index_parent_tab = int(input("Enter the number of the parent tab you want to add tabs too  :  "))
+        index_parent_tab -= 1
+
+        if tabs[index_parent_tab] in tabs != []:
+            title = input("Enter the title of the nested tab : ")
+            url = input("Enter the url of the nested tab : ")
+
+            for key, value in tabs[index_parent_tab].items():
+                new_nested_tab = {title: url}
+                tabs.insert(index_parent_tab, new_nested_tab)
+
+    print("list of the opened tabs now are : ", tabs)
+
+
+open_nested_tab()
+
+
