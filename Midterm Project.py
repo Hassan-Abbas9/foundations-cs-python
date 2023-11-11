@@ -1,8 +1,16 @@
+import os
 import requests  # pip install requests used this in terminal  https://pypi.org/project/beautifulsoup4/
 from bs4 import BeautifulSoup  # pip install beautifulsoup4 used this in terminal
 import json
 
 tabs = []
+
+
+def get_html_content(url):
+    response = requests.get(url)    # Send an HTTP GET request to the URL of the selected tab - https://www.w3schools.com/PYTHON/ref_requests_get.asp
+    html_content = response.text    # Get the HTML content of the response content above
+    soup = BeautifulSoup(html_content, 'html.parser')   # https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
+    return soup.prettify()     # https://pypi.org/project/beautifulsoup4/ it is the BeautifulSoup object method that prettifies the content.
 
 
 def open_new_tab():
@@ -73,10 +81,8 @@ def switch_tab():
             url = value
         if 1 <= switch_index <= len(tabs):
             print(f"\nYou opened the last tab {switch_tab}")
-            response = requests.get(url)  # Send an HTTP GET request to the URL of the selected tab - https://www.w3schools.com/PYTHON/ref_requests_get.asp
-            html_content = response.text  # Get the HTML content of the response content above
-            soup = BeautifulSoup(html_content, 'html.parser')  # https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
-            print(soup.prettify())  # https://pypi.org/project/beautifulsoup4/ it is the BeautifulSoup object method that prettifies the content.
+            content = get_html_content(url)
+            print(content)
         else:
             print("Invalid Index. No tabs displayed.")
 
@@ -139,6 +145,6 @@ clear_all_tabs()
 
 
 def save_tabs():
-# JSON stands for JavaScript Object Notation
-# installed json in terminal using "pip install simplejson" from https://stackoverflow.com/questions/1389141/how-to-add-json-library
-
+    # JSON stands for JavaScript Object Notation
+    folder_path = input("Please enter a file path to save the current state of open tabs  -  ")
+    file_name = input("Enter the file name & type you want to save in your file path  -  ")
