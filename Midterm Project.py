@@ -31,16 +31,16 @@ def open_new_tab():
 
 
 def close_tab():
-    if not tabs:  # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
+    if not tabs:                               # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
         print("\nThere are no tabs open for you to close.")
         return
 
-    print("\nThe opened tabs are of the following indexes : ")
+    print("\nThe opened tabs are of the following : ")
 
     for i in range(len(tabs)):  # for loop for displaying our tabs, so that we know which tab index to close.
         print(f"{i + 1}. {tabs[i]}")
 
-    close_index = input("\nEnter the index of the tab you want to close / press ENTER to close the last tab : ")
+    close_index = input("\nEnter the number of the tab you want to close OR press ENTER to close the last tab : ")
     if close_index == "":  # if empty input, means we remove the last TAB
         closed_tab = tabs.pop()  # https://www.w3schools.com/python/ref_list_pop.asp method used to CLOSE the last tab directly from the users tabs list
         print(f"\nYou closed the last tab {closed_tab}")
@@ -50,7 +50,7 @@ def close_tab():
             closed_tab = tabs.pop(close_index - 1)
             print(f"\nYou closed the last tab {closed_tab}")
         else:
-            print("\nInvalid Index. No tab closed")
+            print("\nInvalid Number. No tab closed")
             return
 
 
@@ -64,7 +64,7 @@ def switch_tab():
     for i in range(len(tabs)):  # for loop for displaying our tabs, so that we know which tab index to open.
         print(f"\n{i + 1}. {tabs[i]}")
 
-    switch_index = input("Enter the index of the tab you want to display the HTML content for : ")
+    switch_index = input("Enter the Number of the tab you want to display the HTML content for : ")
     url = ""
     if switch_index == "":
         for key, value in tabs[len(tabs) - 1].items():
@@ -78,7 +78,7 @@ def switch_tab():
             content = get_html_content(url)
             print(content)
         else:
-            print("Invalid Index. No tabs displayed.")
+            print("Invalid Number. No tabs displayed.")
 
 
 def display_all_tabs():
