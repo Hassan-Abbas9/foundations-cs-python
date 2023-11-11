@@ -189,4 +189,28 @@ import_tabs()
 def display_menu():
     print(
         "Hello USER, you just entered the advanced browser stimulation :) \nThis is your main menu: \n1. Open Tab \n2. Close Tab \n3. Switch Tab \n4.Display All Tabs "
-        "\n5. Open Nested Tab  \n6. Clear All Tabs \n7. Save Tabs \n8. Import Tabs \n\nPlease choose a number from 1-9: ")
+        "\n5. Open Nested Tab  \n6. Clear All Tabs \n7. Save Tabs \n8. Import Tabs \n9. Exit \n\nPlease choose a number from 1-9: ")
+
+
+def main():
+    print("****Welcome to the Advanced Browser Tabs Simulation****")
+    choice = 0
+    while choice != 9:
+        display_menu()
+        choice = int(input("\n Enter your choice : "))
+
+        if choice == 1:
+            open_new_tab()
+
+        elif choice == 2:
+            close_tab()
+
+        elif choice == 3:
+            switch_tab()
+
+        elif choice == 4:
+            display_all_tabs()
+
+        elif choice == 5:
+            open_nested_tab()
+
