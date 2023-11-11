@@ -30,9 +30,6 @@ def open_new_tab():
     print("\nyou opened these tabs : ", tabs)
 
 
-open_new_tab()
-
-
 def close_tab():
     if not tabs:  # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
         print("\nThere are no tabs open for you to close.")
@@ -55,9 +52,6 @@ def close_tab():
         else:
             print("\nInvalid Index. No tab closed")
             return
-
-
-close_tab()
 
 
 def switch_tab():
@@ -87,9 +81,6 @@ def switch_tab():
             print("Invalid Index. No tabs displayed.")
 
 
-switch_tab()
-
-
 def display_all_tabs():
     if not tabs:
         print("There are no tabs opened")
@@ -101,9 +92,6 @@ def display_all_tabs():
             for key, value in tabs[i].items():
                 title = key
                 print(f"{title}")
-
-
-display_all_tabs()
 
 
 def open_nested_tab():
@@ -135,15 +123,9 @@ def open_nested_tab():
     print("list of the opened tabs now are : ", tabs)
 
 
-open_nested_tab()
-
-
 def clear_all_tabs():
     tabs.clear()
     print("***********You just cleared all of your tabs***********")
-
-
-clear_all_tabs()
 
 
 def save_tabs():
@@ -169,8 +151,6 @@ def save_tabs():
         print(f"Written to {exact_path}")
 
 
-save_tabs()
-
 
 def import_tabs():
     folder_path = input("Please enter a file path to open  -  ")
@@ -181,9 +161,6 @@ def import_tabs():
         data = json.load(file)                                # load the data from the file using load method - https://www.geeksforgeeks.org/json-load-in-python/
         tabs = data["tabs"].copy()
         print(f"loaded tabs: {tabs}")
-
-
-import_tabs()
 
 
 def display_menu():
