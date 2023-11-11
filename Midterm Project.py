@@ -27,7 +27,7 @@ def open_new_tab():
         else:
             print("Your input is invalid!! please start the URL with https:// or http://")
 
-    print("you opened these tabs : ", tabs)
+    print("\nyou opened these tabs : ", tabs)
 
 
 open_new_tab()
@@ -41,7 +41,7 @@ def close_tab():
     print("\nThe opened tabs are of the following indexes : ")
 
     for i in range(len(tabs)):  # for loop for displaying our tabs, so that we know which tab index to close.
-        print(f"\n{i + 1}. {tabs[i]}")
+        print(f"{i + 1}. {tabs[i]}")
 
     close_index = input("\nEnter the index of the tab you want to close / press ENTER to close the last tab : ")
     if close_index == "":  # if empty input, means we remove the last TAB
@@ -185,3 +185,8 @@ def import_tabs():
 
 import_tabs()
 
+
+def display_menu():
+    print(
+        "Hello USER, you just entered the advanced browser stimulation :) \nThis is your main menu: \n1. Open Tab \n2. Close Tab \n3. Switch Tab \n4.Display All Tabs "
+        "\n5. Open Nested Tab  \n6. Clear All Tabs \n7. Save Tabs \n8. Import Tabs \n\nPlease choose a number from 1-9: ")
