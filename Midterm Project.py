@@ -56,7 +56,7 @@ def close_tab():
 
 def switch_tab():
     if not tabs:
-        print("There are no tabs opened.")
+        print("\nThere are no tabs opened.")
         return
 
     print("\nThe opened tabs are of the following indexes: ")
@@ -83,7 +83,7 @@ def switch_tab():
 
 def display_all_tabs():
     if not tabs:
-        print("There are no tabs opened")
+        print("\nThere are no tabs opened")
         return
 
     else:
@@ -96,7 +96,7 @@ def display_all_tabs():
 
 def open_nested_tab():
     if not tabs:
-        print("There are no tabs opened")
+        print("\nThere are no tabs opened")
         return
     else:
         print("Where would you like to open the nested tab : ")
@@ -148,7 +148,7 @@ def save_tabs():
         json_string = json.dumps(resultant_dict, indent=4)  # https://www.w3schools.com/python/python_json.asp - used to convert Python object to JSON
         file.write(json_string)                                                   # https://realpython.com/working-with-files-in-python/  -  writing the data
 
-        print(f"Written to {exact_path}")
+        print(f"\nWritten to {exact_path}")
 
 
 
@@ -160,12 +160,12 @@ def import_tabs():
     with open(exact_path, mode="r") as file:   # r to read the file
         data = json.load(file)                                # load the data from the file using load method - https://www.geeksforgeeks.org/json-load-in-python/
         tabs = data["tabs"].copy()
-        print(f"loaded tabs: {tabs}")
+        print(f"\nloaded tabs: {tabs}")
 
 
 def display_menu():
     print(
-        "Hello USER, you just entered the advanced browser stimulation :) \nThis is your main menu: \n1. Open Tab \n2. Close Tab \n3. Switch Tab \n4.Display All Tabs "
+        "\nHello USER, you just entered the advanced browser stimulation :) \nThis is your main menu: \n1. Open Tab \n2. Close Tab \n3. Switch Tab \n4. Display All Tabs "
         "\n5. Open Nested Tab  \n6. Clear All Tabs \n7. Save Tabs \n8. Import Tabs \n9. Exit \n\nPlease choose a number from 1-9: ")
 
 
@@ -174,7 +174,7 @@ def main():
     choice = 0
     while choice != 9:
         display_menu()
-        choice = int(input("\n Enter your choice : "))
+        choice = int(input("\nEnter your choice   :   "))
 
         if choice == 1:
             open_new_tab()
