@@ -1,6 +1,6 @@
-import os
+import os             # https://realpython.com/working-with-files-in-python/ used for handling the OS files to read and write
 import requests  # pip install requests used this in terminal  https://pypi.org/project/beautifulsoup4/
-from bs4 import BeautifulSoup  # pip install beautifulsoup4 used this in terminal
+from bs4 import BeautifulSoup      # pip install beautifulsoup4 used this in terminal
 import json
 
 tabs = []
@@ -148,3 +148,23 @@ def save_tabs():
     # JSON stands for JavaScript Object Notation
     folder_path = input("Please enter a file path to save the current state of open tabs  -  ")
     file_name = input("Enter the file name & type you want to save in your file path  -  ")
+
+    exact_path = os.path.join(folder_path, file_name)   # used to join the 2 parameters with \ or / depending on the users OS.
+    with open(exact_path, mode="w") as file:                 # https://realpython.com/working-with-files-in-python/ - open() opens files for writing and returns a file handle.
+        resultant_dict = {"tabs": tabs.copy()}                      # here we are creating a copy of the opened tabs.
+        contents = {}                                                             # {"url": "content", "url2".....}
+
+        for tab in resultant_dict["tabs"]:                            # for loop is to add the "tabs" as a key for each tab in the list of opened tabs.
+            for tab_name, tab_url in tab.items():                # for loop is to add the CONTENT of each page to the dictionary in JSON.
+                print(f"Scrapping {tab_url} content...")
+                contents[tab_url] = get_html_content(tab_url)    # for each key URL. we place the Prettified html from the function.
+
+        resultant_dict["contents"] = contents                           # for each key CONTENT. we insert the value contents dictionary
+        json_string = json.dumps(resultant_dict, indent=4)     # https://www.w3schools.com/python/python_json.asp - used to convert Python object to JSON
+        file.write(json_string)                                                      # https://realpython.com/working-with-files-in-python/  -  writing the data
+
+        print(f"Written to {exact_path}")
+
+
+save_tabs()
+
