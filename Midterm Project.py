@@ -214,3 +214,22 @@ def main():
         elif choice == 5:
             open_nested_tab()
 
+        elif choice == 6:
+            clear_all_tabs()
+
+        elif choice == 7:
+            save_tabs()
+
+        elif choice == 8:
+            import_tabs()
+
+        elif choice == 9:
+            print("****You exited the program****")
+            break
+
+        else:
+            print("Wrong input please, choose 1-9.")
+            pass
+
+
+main()
