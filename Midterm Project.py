@@ -168,3 +168,12 @@ def save_tabs():
 
 save_tabs()
 
+
+def import_tabs():
+
+    folder_path = input("Please enter a file path to save the current state of open tabs  -  ")
+    file_name = input("Enter the file name & type you want to save in your file path  -  ")
+
+    exact_path = os.path.join(folder_path, file_name)
+    with open(exact_path, mode="r") as file:            # r to read the file
+        
