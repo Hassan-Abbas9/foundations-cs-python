@@ -31,18 +31,18 @@ def open_new_tab():
 
 
 def close_tab():
-    if not tabs:                               # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
+    if not tabs:                                             # same as if tabs == [], simplified to fix "Expression can be simplified" weak warning.
         print("\nThere are no tabs open for you to close.")
         return
 
     print("\nThe opened tabs are of the following : ")
 
-    for i in range(len(tabs)):  # for loop for displaying our tabs, so that we know which tab index to close.
+    for i in range(len(tabs)):                       # for loop for displaying our tabs, so that we know which tab index to close.
         print(f"{i + 1}. {tabs[i]}")
 
     close_index = input("\nEnter the number of the tab you want to close OR press ENTER to close the last tab : ")
-    if close_index == "":  # if empty input, means we remove the last TAB
-        closed_tab = tabs.pop()  # https://www.w3schools.com/python/ref_list_pop.asp method used to CLOSE the last tab directly from the users tabs list
+    if close_index == "":                             # if empty input, means we close the last opened TAB
+        closed_tab = tabs.pop()                  # https://www.w3schools.com/python/ref_list_pop.asp method used to CLOSE the last tab directly from the users tabs list
         print(f"\nYou closed the last tab {closed_tab}")
     else:
         close_index = int(close_index)
@@ -61,7 +61,7 @@ def switch_tab():
 
     print("\nThe opened tabs are of the following indexes: ")
 
-    for i in range(len(tabs)):  # for loop for displaying our tabs, so that we know which tab index to open.
+    for i in range(len(tabs)):                        # for loop for displaying our tabs, so that we know which tab index to open.
         print(f"\n{i + 1}. {tabs[i]}")
 
     switch_index = input("Enter the Number of the tab you want to display the HTML content for : ")
@@ -142,19 +142,19 @@ def save_tabs():
     file_name = input("Enter the file name & type you want to save in your file path  -  ")
 
     exact_path = os.path.join(folder_path, file_name)  # used to join the 2 parameters with \ or / depending on the users OS.
-    with open(exact_path, mode="w") as file:      # https://realpython.com/working-with-files-in-python/ - open() opens files for writing and returns a file handle.
-        resultant_dict = {"tabs": tabs.copy()}           # here we are creating a copy of the opened tabs.
-        contents = {}                                                  # {"url": "content", "url2".....}
+    with open(exact_path, mode="w") as file:                # https://realpython.com/working-with-files-in-python/
+        resultant_dict = {"tabs": tabs.copy()}                     # here we are creating a copy of the opened tabs.
+        contents = {}                                                            # {"url": "content", "url2".....}
 
         # loop over the tabs and scrape their content to be saved in the content's dict.
         for tab in resultant_dict["tabs"]:
             for key, value in tab.items():
                 print(f"Scrapping {value} content...")
-                contents[value] = get_html_content(value)        # for each key URL. we place the Prettified html from the function.
+                contents[value] = get_html_content(value)           # for each key URL. we place the Prettified html from the function.
 
         resultant_dict["contents"] = contents
-        json_string = json.dumps(resultant_dict, indent=4)  # https://www.w3schools.com/python/python_json.asp - used to convert Python object to JSON
-        file.write(json_string)                                                   # https://realpython.com/working-with-files-in-python/  -  writing the data
+        json_string = json.dumps(resultant_dict, indent=4)     # https://www.w3schools.com/python/python_json.asp
+        file.write(json_string)                                                      # https://realpython.com/working-with-files-in-python/  -  writing the data
 
         print(f"\nWritten to {exact_path}")
 
