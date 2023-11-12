@@ -83,20 +83,23 @@ def switch_tab():
 
 def display_all_tabs():
     if not tabs:
-        print("\nThere are no tabs opened")
+        print("\nThere are no tabs opened.")
         return
 
     else:
         print("\nThe opened tabs are the following : ")
         for i in range(len(tabs)):
+            parent_key = ""
             for key, value in tabs[i].items():
                 num_keys = len(tabs[i])
                 title = key
 
-                if num_keys == 1:
+                if parent_key == "":
+                    parent_key = title
                     print(f"{title}")
-                if num_keys >= 2:
-                    print(f"----------------{title}")
+
+                elif num_keys >= 2:
+                    print(f"----------------> {title}")
 
 
 def open_nested_tab():
