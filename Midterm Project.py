@@ -159,7 +159,6 @@ def save_tabs():
         print(f"\nWritten to {exact_path}")
 
 
-
 def import_tabs():
     folder_path = input("Please enter a file path to open  -  ")
     file_name = input("Enter the file name & type you want to open in your file path  -  ")
@@ -218,4 +217,3 @@ def main():
 
 
 main()
-
