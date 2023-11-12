@@ -90,8 +90,15 @@ def display_all_tabs():
         print("\nThe opened tabs are the following : ")
         for i in range(len(tabs)):
             for key, value in tabs[i].items():
+                num_keys = len(tabs[i])
                 title = key
-                print(f"{title}")
+
+                if num_keys == 1:
+                    title = key
+                    print(f"{title}")
+                if num_keys >= 2:
+                    title = key
+                    print(f"----------------{title}")
 
 
 def open_nested_tab():
@@ -129,7 +136,7 @@ def clear_all_tabs():
 
 
 def save_tabs():
-    # JSON = DICTIONARY
+    # JSON = JavaScript Object Notation
     folder_path = input("Please enter a file path to save the current state of open tabs  -  ")
     file_name = input("Enter the file name & type you want to save in your file path  -  ")
 
@@ -138,7 +145,7 @@ def save_tabs():
         resultant_dict = {"tabs": tabs.copy()}           # here we are creating a copy of the opened tabs.
         contents = {}                                                  # {"url": "content", "url2".....}
 
-        # loop over the tabs and scrape their content to be saved in the contents dict.
+        # loop over the tabs and scrape their content to be saved in the content's dict.
         for tab in resultant_dict["tabs"]:
             for key, value in tab.items():
                 print(f"Scrapping {value} content...")
