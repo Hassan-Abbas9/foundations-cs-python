@@ -94,10 +94,8 @@ def display_all_tabs():
                 title = key
 
                 if num_keys == 1:
-                    title = key
                     print(f"{title}")
                 if num_keys >= 2:
-                    title = key
                     print(f"----------------{title}")
 
 
@@ -217,3 +215,4 @@ def main():
 
 
 main()
+
