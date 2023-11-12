@@ -7,10 +7,10 @@ tabs = []
 
 
 def get_html_content(url):
-    response = requests.get(url)  # Send an HTTP GET request to the URL of the selected tab - https://www.w3schools.com/PYTHON/ref_requests_get.asp
-    html_content = response.text  # Get the HTML content of the response content above
-    soup = BeautifulSoup(html_content, 'html.parser')  # https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
-    return soup.prettify()  # https://pypi.org/project/beautifulsoup4/ it is the BeautifulSoup object method that prettifies the content.
+    response = requests.get(url)                 # Send an HTTP GET request to the URL of the selected tab - https://www.w3schools.com/PYTHON/ref_requests_get.asp
+    html_content = response.text              # Get the HTML content of the response content above
+    soup = BeautifulSoup(html_content, 'html.parser')        # https://www.crummy.com/software/BeautifulSoup/bs4/doc/#quick-start
+    return soup.prettify()                           # https://pypi.org/project/beautifulsoup4/ it is the BeautifulSoup object method that prettifies the content.
 
 
 def open_new_tab():
@@ -20,7 +20,7 @@ def open_new_tab():
         title = input(f'Please input the TITLE of Tab {i + 1} : ')
         url = input(f'Please input the URL of Tab {i + 1} : ')
 
-        if url.startswith("https://") or url.startswith("http://"):  # https://www.w3schools.com/python/ref_string_startswith.asp - startswith function in strings
+        if url.startswith("https://") or url.startswith("http://"):      # https://www.w3schools.com/python/ref_string_startswith.asp - startswith function in strings
             new_tab = {title: url}
             tabs.append(new_tab)
             print(f"You opened {new_tab} tab successfully!")
@@ -121,8 +121,7 @@ def open_nested_tab():
 
             if url.startswith("https://") or url.startswith("http://"):
                 new_nested_tab = {title: url}
-                tabs[index_parent_tab].update(new_nested_tab)  # The update method in dictionaries
-                # https://www.w3schools.com/python/ref_dictionary_update.asp
+                tabs[index_parent_tab].update(new_nested_tab)             # The update method in dictionaries - https://www.w3schools.com/python/ref_dictionary_update.asp
 
             else:
                 print("Your input URL is wrong. Make sure it starts with https:// or http://")
