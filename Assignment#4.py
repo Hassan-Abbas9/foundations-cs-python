@@ -83,6 +83,39 @@ class Graph:
         return False
 
 
+class Stack:       # copied and understood the code from
+    # https://www.sanfoundry.com/python-program-check-string-palindrome-using-stack/
+    def __init__(self):
+        self.items = []
+
+    def is_empty(self):
+        return self.items == []
+
+    def push(self, data):
+        self.items.append(data)
+
+    def pop(self):
+        return self.items.pop()
+
+
+def stack_function_menu():
+    while True:
+        s = Stack()
+        text = input('Please enter the string: ')
+
+        for character in text:
+            s.push(character)
+
+        reversed_text = ''
+        while not s.is_empty():
+            reversed_text = reversed_text + s.pop()
+
+        if text == reversed_text:
+            print('The string is a palindrome.')
+        else:
+            print('The string is not a palindrome.')
+
+
 def linked_list_menu():
 
     while True:
@@ -160,6 +193,9 @@ def main():
 
     if choice == 1:
         linked_list_menu()
+
+    elif choice == 2:
+        stack_function_menu()
 
     elif choice == 5:
         graph_menu()
