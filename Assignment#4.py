@@ -11,7 +11,7 @@ class LinkedList:
         self.tail = new_value
         self.length = 1
 
-    def append(self, value):
+    def append(self, value): # 0(1) because we add directly to the end of the LinkedList
         new_node = Node(value)
         if self.length == 0:
             self.head = new_node
@@ -21,13 +21,13 @@ class LinkedList:
             self.tail = new_node
         self.length += 1
 
-    def print_nodes(self):
+    def print_nodes(self): # 0(n) : n being the looping through the LinkedList until the end of it
         temp = self.head
         while temp is not None:
             print(temp.value)
             temp = temp.next
 
-    def get(self, index):
+    def get(self, index): # 0(n) : n being the looping through the Linkedlist until the end of it
         if index < 0 or index >= self.length:
             return None
         else:
@@ -36,7 +36,7 @@ class LinkedList:
                 temp = temp.next
             return temp
 
-    def remove(self, index):
+    def remove(self, index): # 0(n) : n being the looping through the Linkedlist until the end of it
         if index < 0 or index >= self.length:
             return None
         prev = self.get(index - 1)
@@ -51,20 +51,20 @@ class Graph:
     def __init__(self):
         self.adj_list ={}
 
-    def add_vertex(self, vertex):
+    def add_vertex(self, vertex): # 0(1)
         if vertex not in self.adj_list.keys():
             self.adj_list[vertex] = []
             return True
         return False
 
-    def add_edge(self, v1, v2):
+    def add_edge(self, v1, v2): # 0(1)
         if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
             self.adj_list[v1].append(v2)
             self.adj_list[v2].append(v1)
             return True
         return False
 
-    def remove_edge(self, v1, v2):
+    def remove_edge(self, v1, v2): # 0(n) : n being the looping through the list of edges
         if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
             try:
                 self.adj_list[v1].remove(v2)
@@ -74,7 +74,7 @@ class Graph:
             return True
         return False
 
-    def remove_vertex(self, vertex):
+    def remove_vertex(self, vertex): # 0(n2) : n being the looping through all the list of vertices & Edges
         if vertex in self.adj_list.keys():
             for other_vertex in self.adj_list[vertex]:
                 self.adj_list[other_vertex].remove(vertex)
@@ -91,11 +91,79 @@ class Stack:       # copied and understood the code from
     def is_empty(self):
         return self.items == []
 
-    def push(self, data):
+    def push(self, data): # 0(1)
         self.items.append(data)
 
-    def pop(self):
+    def pop(self): # 0(1)
         return self.items.pop()
+
+
+class Student:
+    def __init__(self, name, midterm_grade, final_grade, good_attitude):
+        self.name = name
+        self.midterm_grade = midterm_grade
+        self.final_grade = final_grade
+        self.good_attitude = good_attitude
+
+    def priority_for_interview(self, other_student): # 0(1)
+        if self.good_attitude != other_student.good_attitude:
+            return self.good_attitude > other_student.good_attitude
+        elif self.final_grade != other_student.final_grade:
+            return self.final_grade > other_student.final_grade
+        else:
+            return self.midterm_grade > other_student.midterm_grade
+
+
+class PriorityQueue:
+    def __init__(self):
+        self.students = []
+
+    def add_student(self, student): # 0(1)
+        self.students.append(student)
+
+    def interview_student(self): # 0(n) : n being the iterating through the list of students to find the highest priority.
+        if self.students:
+            highest_priority_student = self.students[0]
+            for student in self.students[1:]:
+                if student.priority_for_interview(highest_priority_student):
+                    highest_priority_student = student
+
+            self.students.remove(highest_priority_student)
+            print(f"Interviewing {highest_priority_student.name}")
+        else:
+            print("No students to interview")
+
+
+def student_priority_list():
+
+    priority_queue = PriorityQueue()
+
+    while True:
+        print("\nHR Office Menu:")
+        print("a. Add a student")
+        print("b. Interview a student")
+        print("c. Return to main menu")
+
+        choice = input("Enter your choice: ").lower()
+
+        if choice == 'a':
+            name = input("Enter student name: ")
+            midterm_grade = int(input("Enter midterm grade (0-100): "))
+            final_grade = int(input("Enter final grade (0-100): "))
+            good_attitude = input("Does the student have a good attitude? (True/False): ").lower() == 'true'
+            student = Student(name, midterm_grade, final_grade, good_attitude)
+            priority_queue.add_student(student)
+            print(f"{name} added to the priority queue.")
+
+        elif choice == 'b':
+            priority_queue.interview_student()
+
+        elif choice == 'c':
+            print("\nYou return to the Main Menu")
+            main()
+
+        else:
+            print("Invalid choice. Please choose again.")
 
 
 def stack_function_menu():
@@ -112,8 +180,12 @@ def stack_function_menu():
 
         if text == reversed_text:
             print('The string is a palindrome.')
+            print('\nYou return to the Main menu')
+            main()
         else:
             print('The string is not a palindrome.')
+            print('\nYou return to the Main menu')
+            main()
 
 
 def linked_list_menu():
@@ -149,7 +221,7 @@ def graph_menu():
     graph = Graph()
 
     while True:
-        sub_choice = input("\na. Add vertex\nb. Add edge\nc. Remove vertex\nd. Remove edge\ne. Display vertices with a degree of X or more.\nf. Return to main menu\nEnter your choice: ").lower()
+        sub_choice = input("\na. Add vertex\nb. Add edge\nc. Remove vertex\nd. Remove edge\ne. Display vertices with a degree of X or more.\nf. Return to main menu \nEnter your choice: ").lower()
 
         if sub_choice == "a":
             vertex = input("Enter the vertex to add: ")
@@ -181,6 +253,9 @@ def graph_menu():
             else:
                 print("Edge does not exist.")
 
+        elif sub_choice == "f":
+            print("\nYou return to the Main Menu")
+            main()
 
         else:
             print("Invalid choice. Please enter a valid option.")
@@ -197,11 +272,19 @@ def main():
     elif choice == 2:
         stack_function_menu()
 
+    elif choice == 3:
+        student_priority_list()
+
     elif choice == 5:
         graph_menu()
+
+    elif choice == 6:
+        print("\nyou exited the program.")
+        return
 
     else:
         print("Invalid choice. Please enter a valid option.")
 
 
-main()
+if __name__ == '__main__':
+    main()
