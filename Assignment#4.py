@@ -27,3 +27,48 @@ class LinkedList:
             print(temp.value)
             temp = temp.next
 
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        else:
+            temp = self.head
+            for _ in range(index):
+                temp = temp.next
+            return temp
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        prev = self.get(index - 1)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+
+def main():
+    value = int(input("Enter the initial value for the linked list: "))
+    linked_list = LinkedList(value)
+
+    while True:
+        print("\na. Add Node")
+        print("b. Display Nodes")
+        print("c. Delete Node")
+        print("d. Return to main menu")
+
+        choice = input("Enter your choice: ").lower()
+
+        if choice == "a":
+            value = int(input("Enter the value to add: "))
+            linked_list.append(value)
+        elif choice == "b":
+            linked_list.print_nodes()
+        elif choice == "c":
+            value = int(input("Enter the value to INDEX of the value to delete: "))
+            linked_list.remove(value)
+        elif choice == "d":
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+main()
