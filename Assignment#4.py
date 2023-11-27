@@ -1,3 +1,6 @@
+# graph and Linkedlist were solved after watching tutorials on
+# https://www.udemy.com/course/data-structures-algorithms-python/
+
 class Node:
     def __init__(self, value):
         self.value = value
